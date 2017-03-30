@@ -39,7 +39,7 @@ function getMyTweets()
 	var client = new Twitter(keyList);
 
 	var params = {screen_name: 'minhtuyen'};
-	//client.get('statuses/user_timeline', params, processTweets);
+	//client.get('statuses/user_timeline', params, processTweets n=20);
 
 	client.get('statuses/user_timeline', {count: 20, trim_user: false, exclude_replies: true, include_rts: false}, processTweets)
 }
@@ -93,16 +93,16 @@ function getSpotify(searchSong)
 function getMovie(searchMovie) {
 
 	
-	// used ternary function 
+	// pokemon!! using npm request for omdb
 	var userMovie = searchMovie ? searchMovie : 'Pokemon: The First Movie';
 
 	Request("http://www.omdbapi.com/?t=" + userMovie + "&y=&plot=short&r=json&tomatoes=true", function (error, response, body) 
 	{
 
-		// If the request is successful 
+		// error responses if need
 		if (!error && response.statusCode === 200) {
 
-    		// Parse the returned data (body) and display movie info
+    		// movie parse items
     		console.log('Movie Title: ' + JSON.parse(body).Title);
     		console.log('Release Year: ' + JSON.parse(body).Year);
     		console.log('IMDB Rating: ' + JSON.parse(body).imdbRating);
