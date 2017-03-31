@@ -30,10 +30,10 @@ switch (action)
 function getMyTweets() 
 {
 	
-	// Grabs the bands variables
+	// Grabs all the 4 required keys 
 	var keys = require("./keys.js");
 
-	// Gets all of myBands bands from the bands file.
+	// Twitter requirement 
 	var keyList = keys.twitterKeys;
 
 	var client = new Twitter(keyList);
@@ -41,7 +41,7 @@ function getMyTweets()
 	var params = {screen_name: 'minhtuyen'};
 	//client.get('statuses/user_timeline', params, processTweets n=20);
 
-	client.get('statuses/user_timeline', {count: 20, trim_user: false, exclude_replies: true, include_rts: false}, processTweets)
+	client.get('statuses/user_timeline', {count: 20, trim_user: false, exclude_replies: false, include_rts: true}, processTweets)
 }
 
 
